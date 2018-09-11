@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="home :: header-meta-css" />
+</head>
+<body>
+	<div class="page">
+		<div th:replace="home :: header" />
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<div th:replace="home :: slide-menu" />
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Users</h2>
+					</div>
+				</header>
+				<!-- Dashboard Counts Section-->
+				<section class="form" style="padding: 15px">
+					<!-- Horizontal Form-->
+					<div class="col-lg-10">
+						<form class="form-horizontal" method="post"
+							th:action="@{/admin/user/edit}" th:object="${user}">
+							
+							<div class="page-header" 
+									style="padding: 10px; margin-bottom: 20px; margin-left: 100px">
+								<input type="submit" value="Submit" class="btn btn-primary" />
+								<a class="btn btn-secondary" th:href="@{/admin/users}">Cancel</a>		
+							</div>
+							<div class="card" style="margin-left: 100px">
+								<div class="card-header d-flex align-items-center">
+									<h3 class="h4">Edit user form</h3>
+								</div>
+								<div class="card-body">
+									<div class="form-group row">
+										<label class="col-sm-8">Enter the user informations</label>
+										<div class="col-sm-9">
+											<input th:field="*{id}" readonly="true" hidden="true"
+												class="form-control form-control-success" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">First name</label>
+										<div class="col-sm-9">
+											<input th:field="*{firstName}" placeholder="First name"
+												class="form-control form-control-success" />
+											<small class="form-text">Enter your First name here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Last name</label>
+										<div class="col-sm-9">
+											<input th:field="*{lastName}" placeholder="Last name"
+												class="form-control form-control-success" />
+											<small class="form-text">Enter your Last name here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Email</label>
+										<div class="col-sm-9">
+											<input th:field="*{email}" placeholder="Email Address"
+												class="form-control form-control-success" />
+											<small class="form-text">Enter your Email Address
+												here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">User name</label>
+										<div class="col-sm-9">
+											<input th:field="*{userName}" placeholder="User name"
+												class="form-control form-control-success" />
+											<small class="form-text">Enter your User name here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Password</label>
+										<div class="col-sm-9">
+											<input th:field="*{password}" type="password"
+												placeholder="password"
+												class="form-control form-control-success" value="" />
+											<small class="form-text">Enter your password here .</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+				<div th:replace="home :: footer" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>

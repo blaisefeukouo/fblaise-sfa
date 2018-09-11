@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<div th:fragment="header-css">
+		<!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1"> -->
+		<link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/vendor/bootstrap/css/bootstrap.min.css}" />
+	    <!-- Font Awesome CSS-->
+	    <link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/vendor/font-awesome/css/font-awesome.min.css}" />
+	    <!-- Fontastic Custom icon font-->
+	     <link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/css/fontastic.css}" />
+	    <!-- Google fonts - Poppins -->
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+	    <!-- theme stylesheet-->
+	    <link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/css/style.default.css}" id="theme-stylesheet"/>
+	    <!-- Custom stylesheet - for your changes-->
+	    <link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/css/custom.css}" />
+	    <!-- Favicon-->
+    	<link rel="shortcut icon" th:href="@{/bootstrap-4-material-admin/img/favicon.ico}" /> 
+	</div>
+ 
+</head>
+<body>
+	<div th:fragment="header">
+		<!-- this is header -->
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" th:href="@{/}">Spring Boot</a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a th:href="@{/}">Home</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="home :: header-meta-css" />
+<style type="text/css">
+	.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    width: 500px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+</style>
+</head>
+<body>
+	<div class="page">
+		<div th:replace="home :: header" />
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<div th:replace="home :: slide-menu" />
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Products</h2>
+					</div>
+				</header>
+				<!-- Dashboard Counts Section-->
+				<section class="form" style="padding: 15px;">
+					<div class="col-lg-10">
+						<form class="form-horizontal" method="post"
+							th:action="@{/product/add}" th:object="${product}">
+							<div class="page-header" style="padding: 10px; margin-bottom: 20px; margin-left: 100px">
+								<input type="submit" value="Submit" class="btn btn-primary" />
+								<a class="btn btn-secondary" th:href="@{/products}">Cancel</a>		
+							</div>
+							<div class="card" style="margin-left: 100px">
+								<div class="card-header d-flex align-items-center">
+									<h3 class="h4">Add product Form</h3>
+								</div>
+								<div class="card-body">
+								<p>Enter the product informations</p>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Name</label>
+										<div class="col-sm-9">
+											<input type="text" th:field="*{name}" id="name"
+												placeholder="Name" class="form-control form-control-success"
+												value="" /><small class="form-text">Enter the name
+												here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Description</label>
+										<div class="col-sm-9">
+											<textarea rows="3" cols="4" th:field="*{description}"
+												id="description" placeholder="description"
+												class="form-control form-control-success" value=""></textarea>
+											<small class="form-text">Enter the description here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Price</label>
+										<div class="col-sm-9">
+											<input type="text" th:field="*{price}" id="price"
+												placeholder="Price"
+												class="form-control form-control-success" value="" /><small
+												class="form-text">Enter the price here .</small>
+										</div>
+									</div>
+									<!-- Ancienne maniere de faire -->
+<!-- 									<div class="form-group row"> -->
+<!-- 										<label class="col-sm-3 form-control-label">Family</label> -->
+<!-- 										<div class="col-sm-9 select"> -->
+<!-- 											<input class="form-control" type="text" name="family" -->
+<!-- 												list="listFamilies" placeholder="Select the family here" -->
+<!-- 												th:value="${product.family}==null? '':${product.family.name}"></input> -->
+<!-- 											<datalist id="listFamilies" -->
+<!-- 												th:each="family : ${listFamilies}"> -->
+<!-- 												<option th:value="${family.name}" /> -->
+<!-- 											</datalist> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+
+								<!-- Nouvelle maniere de faire -->
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Family</label>
+										<div class="col-sm-9 select">
+											<select th:field="*{family}"
+												class="js-example-basic-single form-control" id="family-id" name="families[]">
+												<option th:each="family : ${listFamilies}"
+															th:text="${family.getName()}" th:value="${family.id}" />
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+				<div th:replace="home :: footer" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>

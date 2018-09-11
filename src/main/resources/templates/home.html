@@ -1,0 +1,290 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:fragment="header-meta-css">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>SFA</title>
+	<meta name="description" content="" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="robots" content="all,follow" />
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet"
+		th:href="@{/bootstrap-4-material-admin/vendor/bootstrap/css/bootstrap.min.css}"></link>
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet"
+		th:href="@{/bootstrap-4-material-admin/vendor/font-awesome/css/font-awesome.min.css}"></link>
+	<!-- Fontastic Custom icon font-->
+	<link rel="stylesheet"
+		th:href="@{/bootstrap-4-material-admin/css/fontastic.css}"></link>
+	<!-- Google fonts - Poppins -->
+	<!-- 	<link rel="stylesheet" -->
+	<!-- 		th:href="@{https://fonts.googleapis.com/css?family=Poppins:300,400,700}"></link> -->
+	<!-- theme stylesheet-->
+	<link rel="stylesheet"
+		th:href="@{/bootstrap-4-material-admin/css/style.default.css}"
+		id="theme-stylesheet"></link>
+	<!-- Custom stylesheet - for your changes-->
+	<link rel="stylesheet"
+		th:href="@{/bootstrap-4-material-admin/css/custom.css}"></link>
+	<!-- Favicon-->
+	<link rel="shortcut icon"
+		th:href="@{/bootstrap-4-material-admin/img/favicon.ico}"></link>
+	<link rel="stylesheet" type="text/css"
+		th:href="@{/css/registration.css}" />
+	<link rel="stylesheet" th:href="@{/select2/css/select2.min.css}"></link>
+
+</div>
+</head>
+<body>
+	<div class="page">
+		<div th:fragment="header">
+			<!-- 		 	Start Header		 -->
+			<!-- Main Navbar-->
+			<header class="header">
+				<nav class="navbar">
+					<!-- Search Box-->
+					<div class="search-box">
+						<button class="dismiss">
+							<i class="icon-close"></i>
+						</button>
+						<form id="searchForm" action="#" role="search">
+							<input type="search" placeholder="What are you looking for..."
+								class="form-control" />
+						</form>
+					</div>
+					<div class="container-fluid">
+						<div
+							class="navbar-holder d-flex align-items-center justify-content-between">
+							<!-- Navbar Header-->
+							<div class="navbar-header">
+								<!-- Navbar Brand -->
+								<a th:href="@{/home}" class="navbar-brand">
+									<div class="brand-text brand-big">
+										<span>SFA </span><strong>&nbsp; Dashboard</strong>
+									</div>
+									<div class="brand-text brand-small">
+										<strong>SD</strong>
+									</div>
+								</a>
+								<!-- Toggle Button-->
+								<a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+							</div>
+							<!-- Navbar Menu -->
+							<ul
+								class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+								<!-- Search-->
+								<li class="nav-item d-flex align-items-center"><a
+									id="search" href="#"><i class="icon-search"></i></a></li>
+								<!-- Languages dropdown    -->
+								<li class="nav-item dropdown"><a id="languages"
+									rel="nofollow" data-target="#" href="#" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"
+									class="nav-link language dropdown-toggle"> <img
+										th:src="@{/bootstrap-4-material-admin/img/flags/16/GB.png}"
+										alt="English" /><span class="d-none d-sm-inline-block">English</span></a>
+									<ul aria-labelledby="languages" class="dropdown-menu">
+										<li><a rel="nofollow" href="#" class="dropdown-item">
+												<img
+												th:src="@{/bootstrap-4-material-admin/img/flags/16/DE.png}"
+												alt="English" class="mr-2" />German
+										</a></li>
+										<li><a rel="nofollow" href="#" class="dropdown-item">
+												<img
+												th:src="@{/bootstrap-4-material-admin/img/flags/16/FR.png}"
+												alt="English" class="mr-2" />French
+										</a></li>
+									</ul></li>
+
+								<li class="nav-item dropdown"><label th:utext="${userName}"
+									style="margin-top: 5px"></label></li>
+
+								<!-- Logout    -->
+								<li class="nav-item dropdown"><a id="messages"
+									rel="nofollow" data-target="#" href="#" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false" class="nav-link">
+										<i class="icon-user"></i>
+								</a>
+									<ul aria-labelledby="notifications" class="dropdown-menu"
+										style="min-width: 175px">
+										<li><a rel="nofollow" th:href="@{/logout}"
+											class="dropdown-item d-flex"> <i class="fa fa-sign-out"></i>Logout
+										</a></li>
+									</ul></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+		</div>
+		<!-- 		 	End header		 	 -->
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<div th:fragment="slide-menu">
+				<!-- 			Start Left slide menu				 -->
+				<nav class="side-navbar">
+					<!-- Sidebar Header-->
+					<div class="sidebar-header d-flex align-items-center">
+						<div class="avatar">
+							<img th:src="@{/bootstrap-4-material-admin/img/avatar-1.jpg}"
+								alt="..." class="img-fluid rounded-circle" />
+						</div>
+						<div class="title">
+							<h1 class="h4">Blaise Feukouo</h1>
+							<p>Java Developper</p>
+						</div>
+					</div>
+					<!-- Sidebar Navidation Menus-->
+					<span class="heading">Main</span>
+					<ul class="list-unstyled">
+						<li class="active"><a th:href="@{/home}"><i
+								class="icon-home"></i>Home</a></li>
+						<li><a href="#Operations" aria-expanded="false"
+							data-toggle="collapse"> <i class="icon-interface-windows"></i>Operations
+						</a>
+							<ul id="Operations" class="collapse list-unstyled ">
+								<li><a th:href="@{/commands}">Commands</a></li>
+								<li><a th:href="@{/sales}">Sales</a></li>
+							</ul></li>
+						<li><a href="#Structure" aria-expanded="false"
+							data-toggle="collapse"> <i data-feather="octagon"></i><label
+								style="margin-left: 5px">Structure</label>
+						</a>
+							<ul id="Structure" class="collapse list-unstyled ">
+								<li><a th:href="@{/products}"><i class="icon-bill"></i>Product</a></li>
+								<li><a th:href="@{/clients}"> <i data-feather="users"></i><label
+										style="margin-left: 5px">Clients</label>
+								</a></li>
+							</ul></li>
+						<li><a href="tables.html"> <i class="icon-list"></i>Tasks
+						</a></li>
+						<li><a href="#Statistics" aria-expanded="false"
+							data-toggle="collapse"> <i class="icon-grid"></i>Statistics
+						</a>
+							<ul id="Statistics" class="collapse list-unstyled ">
+								<li><a href="#">Sales</a></li>
+								<li><a href="#">Challenge</a></li>
+							</ul></li>
+						<li th:if="${currentUser.isAdmin()}"><a href="#Settings"
+							aria-expanded="false" data-toggle="collapse"> <i
+								data-feather="settings"></i><label style="margin-left: 5px">Settings</label>
+						</a>
+							<ul id="Settings" class="collapse list-unstyled ">
+								<li><a th:href="@{/admin/users}"><i class="icon-user"></i>Users</a></li>
+								<li><a href="#Settings-Product" aria-expanded="false"
+									data-toggle="collapse"> <i class="icon-grid"></i>Product
+								</a>
+									<ul id="Settings-Product" class="collapse list-unstyled ">
+										<li><a th:href="@{/admin/families}">Family</a></li>
+									</ul></li>
+								<li><a href="#Settings-Client" aria-expanded="false"
+									data-toggle="collapse"> <i data-feather="users"></i><label
+										style="margin-left: 5px">Clients</label>
+								</a>
+									<ul id="Settings-Client" class="collapse list-unstyled ">
+										<li><a href="#">Quarter</a></li>
+										<li><a th:href="@{/admin/sectors}">Sector</a></li>
+									</ul></li>
+							</ul></li>
+					</ul>
+				</nav>
+			</div>
+			<!-- 		End Left slide menu					 -->
+
+			<!-- 	Start Right content		  -->
+			<div class="content-inner">
+				<!-- Page Header-->
+				<div class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Dashboard</h2>
+					</div>
+				</div>
+				<!-- Dashboard Counts Section-->
+				<section class="dashboard-header">
+					<div class="container-fluid">
+						<div class="row">
+							<!-- Line Chart            -->
+							<div class="chart col-lg-6 col-12">
+								<div
+									class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
+									<canvas id="lineCahrt"></canvas>
+								</div>
+							</div>
+							<div class="chart col-lg-3 col-12">
+								<!-- Bar Chart   -->
+								<div class="bar-chart has-shadow bg-white">
+									<div class="title">
+										<strong class="text-violet">95%</strong><br /> <small>Current
+											Server Uptime</small>
+									</div>
+									<canvas id="barChartHome"></canvas>
+								</div>
+								<!-- Numbers-->
+								<div
+									class="statistic d-flex align-items-center bg-white has-shadow">
+									<div class="icon bg-green">
+										<i class="fa fa-line-chart"></i>
+									</div>
+									<div class="text">
+										<strong>99.9%</strong><br /> <small>Success Rate</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<div th:fragment="footer">
+					<!--   		Start Footer		  -->
+					<footer class="main-footer">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-sm-6">
+									<p>Blaise Feukouo &copy; 2018</p>
+								</div>
+								<div class="col-sm-6 text-right">
+									<!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+								</div>
+							</div>
+						</div>
+					</footer>
+					<!-- 					<script type="text/javascript" th:src="@{/js/jquery/3.1.1/jquery.min.js}"></script> -->
+					<script type="text/javascript"
+						th:src="@{/bootstrap-4-material-admin/vendor/jquery/jquery.min.js}"></script>
+					<!-- 					<script type="text/javascript" -->
+					<!-- 						th:src="@{/autocomplete/jquery.autocomplete.min.js}"></script> -->
+					<script type="text/javascript"
+						th:src="@{/bootstrap-4-material-admin/vendor/jquery-validation/jquery.validate.min.js}"></script>
+					<script type="text/javascript"
+						th:src="@{/bootstrap-4-material-admin/vendor/jquery.cookie/jquery.cookie.js}"></script>
+					<script type="text/javascript"
+						th:src="@{/bootstrap-4-material-admin/vendor/bootstrap/js/bootstrap.min.js}"></script>
+					<script type="text/javascript"
+						th:src="@{/bootstrap-4-material-admin/vendor/popper.js/umd/popper.min.js}"></script>
+					<script type="text/javascript"
+						th:src="@{/bootstrap-4-material-admin/vendor/chart.js/Chart.min.js}"></script>
+					<script type="text/javascript"
+						th:src="@{/bootstrap-4-material-admin/js/charts-home.js}"></script>
+					<script type="text/javascript"
+						th:src="@{/bootstrap-4-material-admin/js/front.js}"></script>
+					<script type="text/javascript"
+						th:src="@{/select2/js/select2.min.js}"></script>
+<!-- 						primeng face				 -->
+<!--						 wthousand : tchat en ligne -->
+					<script type="text/javascript" th:src="@{/js/feather.js}"></script>
+					<!-- 					Main File -->
+					<script type="text/javascript" th:src="@{/js/main.js}"></script>
+					<script>
+						feather.replace()
+					</script>
+
+				</div>
+				<!-- 			End Footer			 -->
+			</div>
+			<!-- 	 	End Right content		 	 -->
+		</div>
+	</div>
+	<!-- JavaScript files-->
+
+</body>
+</html>

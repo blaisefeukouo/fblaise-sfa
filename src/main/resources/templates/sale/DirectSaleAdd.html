@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="home :: header-meta-css" />
+</head>
+<body>
+	<div class="page">
+		<div th:replace="home :: header" />
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<div th:replace="home :: slide-menu" />
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Sales: Add new sale</h2>
+					</div>
+				</header>
+				<!-- Dashboard Counts Section-->
+				<section class="tables" style="padding: 20px">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-12">
+								<form class="form-horizontal" method="post"
+									th:action="@{/directsale/save(saleId=${sale.getSaleId()},clientId=${sale.getClientId()})}"
+									th:object="${sale}">
+									<div class="page-header"
+										style="padding: 10px; margin-left: 30px; margin-bottom: 20px; margin-right: 8px;">
+										<div class="col-sm-9 offset-sm-3 row" style="margin-left: 2px">
+											<input type="submit" value="Save" class="btn btn-primary" />
+											<a class="btn btn-secondary"
+												th:href="@{/directsale/cancel(saleId=${sale.getSaleId()})}"
+												style="margin-left: 20px">Cancel</a>
+											<div class="col-md-auto"
+												th:if="${!sale.getSale().getEntries().isEmpty()}">
+												<label class="form-control-label">Total Amount: </label> <label
+													class="form-control-label"
+													th:text="${sale.getSale().getTotalAmount()}"></label> <label
+													class="form-control-label">&nbsp;&nbsp;Total
+													Quantity:</label> <label class="form-control-label"
+													th:text="${sale.getSale().getTotalQuantity()}"></label>
+											</div>
+										</div>
+									</div>
+									<div class="page-header"
+										style="padding: 1px; margin-left: 30px; margin-right: 8px">
+										<div class="form-group row"
+											style="margin-left: 20px; margin-top: 10px">
+											<label class="form-control-label">Client</label>
+											<div class="col-sm-9 select" style="margin-left: 10px">
+												<select th:field="*{client}"
+														class="js-example-basic-single" id="client-id"
+														name="clients[]">
+													<option th:each="client : ${listClients}"
+														th:text="${client.getCommercialName()}"
+														th:value="${client.id}" />
+												</select>
+											</div>
+											<div th:if="${emptyEntriesError != null}"
+												style="margin-left: 25px">
+												<p style="font-size: 20; color: #FF1C19;">Please add at
+													least one entry</p>
+											</div>
+										</div>
+									</div>
+								</form>
+								<form class="form-horizontal" method="post"
+									th:action="@{'/directsale/saleentry/add/' + ${sale.getSaleId()}}"
+									th:object="${saleEntry}">
+									<div class="page-header"
+										style="padding: 0px; margin-left: 30px; margin-bottom: 20px; margin-right: 8px">
+										<div class="row">
+											<div class="form-group row" style="margin-left: 19px">
+												<label class="col-sm-3 form-control-label">Product</label>
+												<div class="col-sm-9 select">
+													<select th:field="*{product}"
+														class="js-example-basic-single" id="product-id"
+														name="products[]">
+														<option th:each="product : ${listProducts}"
+															th:text="${product.getName()}" th:value="${product.id}" />
+													</select>
+												</div>
+											</div>
+											<div class="form-group row" style="margin-left: 2px">
+												<label class="col-sm-3 form-control-label">Quantity</label>
+												<div class="col-sm-9">
+													<input type="text" th:field="*{quantity}" id="quantity"
+														placeholder="quantity"
+														class="form-control form-control-success" value="" />
+												</div>
+
+											</div>
+											<div class="form-group row" style="margin-left: 2px">
+												<input type="submit" value="Add" class="btn btn-primary" />
+											</div>
+											<div th:if="${quantiityError != null}"
+												style="margin-left: 25px">
+												<p style="font-size: 20; color: #FF1C19;">Invalid
+													Quantity</p>
+											</div>
+										</div>
+									</div>
+								</form>
+								<div class="card" style="margin-left: 30px">
+									<div class="card-header d-flex align-items-center">
+										<h3>Sale entries</h3>
+									</div>
+									<div class="card-body">
+										<div class="table-responsive">
+											<table class="table table-striped table-hover">
+												<thead>
+													<tr>
+														<th>#</th>
+														<th>Product</th>
+														<th>Unit price</th>
+														<th>Quantity</th>
+														<th>Total amount</th>
+														<th></th>
+														<th></th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="entry:${listEntries }">
+														<th scope="row">1</th>
+														<td th:text="${entry.product.name}"></td>
+														<td th:text="${entry.product.price}"></td>
+														<td th:text="${entry.quantity}"></td>
+														<td th:text="${entry.getTotalAmount()}" />
+														<td><a th:href="@{'/entry.edit.htm/' + ${entry.id}}">Edit</a></td>
+														<td><a
+															th:href="@{/directsale/saleentry.remove(saleId=${sale.getSaleId()},entryId=${entry.id})}">Delete</a>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<div th:replace="home :: footer" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>

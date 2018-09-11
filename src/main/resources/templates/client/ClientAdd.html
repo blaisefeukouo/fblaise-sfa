@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="home :: header-meta-css" />
+<style type="text/css">
+	.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    width: 500px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+</style>
+</head>
+<body>
+	<div class="page">
+		<div th:replace="home :: header" />
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<div th:replace="home :: slide-menu" />
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Clients</h2>
+					</div>
+				</header>
+				<!-- Dashboard Counts Section-->
+				<section class="form" style="padding: 15px;">
+					<div class="col-lg-10">
+						<form class="form-horizontal" method="post"
+							th:action="@{/client/add}" th:object="${client}">
+							<div class="page-header" style="padding: 10px; margin-bottom: 20px; margin-left: 100px">
+								<input type="submit" value="Submit" class="btn btn-primary" />
+								<a class="btn btn-secondary" th:href="@{/clients}">Cancel</a>		
+							</div>
+							<div class="card" style="margin-left: 100px">
+								<div class="card-header d-flex align-items-center">
+									<h3 class="h4">Add client Form</h3>
+								</div>
+								<div class="card-body">
+									<p>Enter the client informations</p>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Commercial name</label>
+										<div class="col-sm-9">
+											<input type="text" th:field="*{commercialName}" id="commercialName"
+												placeholder="Commercial name"
+												class="form-control form-control-success" value="" /><small
+												class="form-text">Enter the commercial name here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">First name</label>
+										<div class="col-sm-9">
+											<input type="text" th:field="*{firstName}" id="firstName"
+												placeholder="First name"
+												class="form-control form-control-success" value="" /><small
+												class="form-text">Enter your First name here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Last name</label>
+										<div class="col-sm-9">
+											<input type="text" th:field="*{lastName}" id="lastName"
+												placeholder="Last name"
+												class="form-control form-control-success" value="" /><small
+												class="form-text">Enter your Last name here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Email</label>
+										<div class="col-sm-9">
+											<input type="email" th:field="*{email}" id="email"
+												placeholder="Email Address"
+												class="form-control form-control-success" value="" /><small
+												class="form-text">Enter your Email Address here .</small>
+										</div>
+									</div>
+				                    
+				                    <div class="form-group row">
+										<label class="col-sm-3 form-control-label">Sector</label>
+				                        <div class="col-sm-9 select">
+					                        <select th:field="*{sector}"
+												class="js-example-basic-single form-control form-control-success" 
+												id="sector-id" name="products[]">
+												<option th:each="sector : ${listSectors}" th:text="${sector.getName()}"
+					                            	th:value="${sector.id}" />	
+											</select>
+				                        </div>
+				                    </div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+				<div th:replace="home :: footer" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>

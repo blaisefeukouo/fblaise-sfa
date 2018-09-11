@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>SFA</title>
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" /> -->
+<!-- <link rel="stylesheet" -->
+<!-- 	th:href="@{/bootstrap/3.3.7/css/bootstrap.min.css}" /> -->
+<!-- <link th:href="@{/bootstrap/3.3.7/js/bootstrap.min.js}" /> -->
+<!-- <link th:href="@{/bootstrap/3.3.7/js/jquery.min.js}" /> -->
+
+	<link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/vendor/bootstrap/css/bootstrap.min.css}" ></link>
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/vendor/font-awesome/css/font-awesome.min.css}" ></link>
+    <!-- Fontastic Custom icon font-->
+     <link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/css/fontastic.css}" ></link>
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700"></link>
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/css/style.default.css}" id="theme-stylesheet"></link>
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" th:href="@{/bootstrap-4-material-admin/css/custom.css}"></link>
+    <!-- Favicon-->
+    <link rel="shortcut icon" th:href="@{/bootstrap-4-material-admin/img/favicon.ico}" ></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+	 <div class="page login-page">
+      <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+          <div class="row">
+            <!-- Logo & Information Panel-->
+            <div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <h1>SFA</h1>
+                  </div>
+                  <p>Sale force automation</p>
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              <div class="form d-flex align-items-center">
+                <div class="content">
+					<form th:action="@{/login}" method="POST" class="form-signin">
+						<h3 class="form-signin-heading">Welcome to SFA</h3><br /> 
+						
+						<input type="text" id="userName" name="userName" placeholder="User name" class="form-control" ></input> <br /> 
+						<input type="password" th:placeholder="Password" id="password" name="password" class="form-control"  ></input> <br />
+			
+						<div align="center" th:if="${param.error}">
+							<p style="font-size: 20; color: #FF1C19;">Email or Password
+								invalid, please verify</p>
+						</div>
+						<button class="btn btn-lg btn-primary btn-block" name="Submit"
+							value="Login" type="Submit" th:text="Login"></button>
+						
+		                <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+					</form><br/>
+		            <a href="#" class="forgot-pass">Forgot Password?</a><br />
+		            <small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>	
+				</div>
+			</div>
+		   </div>
+         </div>
+        </div>
+	 </div>
+    </div>  
+    <script th:href="@{/bootstrap-4-material-admin/vendor/jquery/jquery.min.js}" ></script>
+    <script th:href="@{/bootstrap-4-material-admin/vendor/popper.js/umd/popper.min.js}" ></script>
+    <script th:href="@{/bootstrap-4-material-admin/vendor/bootstrap/js/bootstrap.min.js}" ></script>
+    <script th:href="@{/bootstrap-4-material-admin/vendor/jquery.cookie/jquery.cookie.js}" ></script>
+    <script th:href="@{/bootstrap-4-material-admin/vendor/chart.js/Chart.min.js}" ></script>
+    <script th:href="@{/bootstrap-4-material-admin/vendor/jquery-validation/jquery.validate.min.js}" ></script>
+    <!-- Main File-->
+    <script th:href="@{/bootstrap-4-material-admin/js/front.js}" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+</body>
+</html>

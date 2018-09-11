@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="home :: header-meta-css" />
+</head>
+<body>
+	<div class="page">
+		<div th:replace="home :: header" />
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<div th:replace="home :: slide-menu" />
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Sectors</h2>
+					</div>
+				</header>
+				<!-- Dashboard Counts Section-->
+				<section class="form">
+					<!-- Horizontal Form-->
+					<div class="col-lg-10">
+						<form class="form-horizontal" method="post"
+							th:action="@{/admin/sector/add}" th:object="${sector}">
+							<div class="page-header" style="padding: 10px; margin-bottom: 20px; margin-left: 100px">
+								<input type="submit" value="Submit" class="btn btn-primary" />
+								<a class="btn btn-secondary" th:href="@{/admin/sectors}">Cancel</a>		
+							</div>
+							<div class="card" style="margin-left: 100px">
+								<div class="card-header d-flex align-items-center">
+									<h3 class="h4">Edit sector form</h3>
+								</div>
+								<div class="card-body">
+									<div class="form-group row">
+										<label class="col-sm-8">Enter the sector informations</label>
+										<div class="col-sm-9">
+											<input th:field="*{id}" readonly="true" hidden="true"
+												class="form-control form-control-success" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Name</label>
+										<div class="col-sm-9">
+											<input th:field="*{name}" placeholder="Name"
+												class="form-control form-control-success" />
+											<small class="form-text">Enter the name here .</small>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Description</label>
+										<div class="col-sm-9">
+											<textarea rows="3" cols="4" th:field="*{description}" placeholder="Description"
+												class="form-control form-control-success" ></textarea>
+											<small class="form-text">Enter the description here .</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+				<div th:replace="home :: footer" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>

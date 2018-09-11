@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="home :: header-meta-css" />
+</head>
+<body>
+	<div class="page">
+		<div th:replace="home :: header" />
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<div th:replace="home :: slide-menu" />
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Clients</h2>
+					</div>
+				</header>
+				<!-- Dashboard Counts Section-->
+				<!-- Horizontal Form-->
+				<section class="form">
+					<div class="col-lg-10">
+						<div class="card" style="margin-left: 100px">
+							<div class="card-header d-flex align-items-center">
+								<h3 class="h4">Client details</h3>
+							</div>
+							<div class="card-body">
+								<form:form class="form-horizontal" method="post" modelAttribute="client">
+									<div class="form-group row">
+										<div class="col-sm-9">
+											<form:input path="id" readonly="true" hidden="true"
+												class="form-control form-control-success" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Commercial name
+										</label>
+										<div class="col-sm-9">
+											<form:label path="commercialName" th:text="': '+${client.commercialName}" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">First name
+										</label>
+										<div class="col-sm-9">
+											<form:label path="firstName" th:text="': '+${client.firstName}" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Last name</label>
+										<div class="col-sm-9">
+											<form:label path="lastName" th:text="': '+${client.lastName}" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Email</label>
+										<div class="col-sm-9">
+											<form:label path="email" th:text="': '+${client.email}" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-3 form-control-label">Sector</label>
+										<div class="col-sm-9">
+											<form:label path="sector" th:text="': '+${client.sector.name}" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-9 offset-sm-3">
+											<a id="login"
+												th:href="@{'/client.edit.htm/' + ${client.id}}"
+												class="btn btn-primary">Edit client</a><span></span> 
+											<a class="btn btn-secondary" th:href="@{/clients}">Cancel</a>
+										</div>
+									</div>
+								</form:form>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div th:replace="home :: footer" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>

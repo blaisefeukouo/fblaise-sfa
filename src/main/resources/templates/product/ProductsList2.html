@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="home :: header-meta-css" />
+</head>
+<body>
+	<div class="page">
+		<div th:replace="home :: header" />
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+			<div th:replace="home :: slide-menu" />
+
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">products</h2>
+					</div>
+				</header>
+				<!-- Dashboard Counts Section-->
+				<section class="tables">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="card" style="margin-left: 30px">
+									<div class="card-close">
+										<div class="dropdown">
+											<button type="button" id="closeCard3" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false"
+												class="dropdown-toggle">
+												<i class="fa fa-ellipsis-v"></i>
+											</button>
+											<div aria-labelledby="closeCard3"
+												class="dropdown-menu dropdown-menu-right has-shadow">
+												<a th:href="@{/product.add.htm}" class="dropdown-item edit">
+													<i class="fa fa-plus"></i>New product
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="card-header d-flex align-items-center">
+										<h3>List of products</h3>
+									</div>
+									<div class="card-body">
+										<div class="table-responsive">
+											<table class="table table-striped table-hover">
+												<thead>
+													<tr>
+														<th>#</th>
+														<th>Name</th>
+														<th>Description</th>
+														<th>Family</th>
+														<th>Price</th>
+														<th></th>
+														<th></th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="product, iterStat:${listProducts}">
+														<td th:text="${iterStat.count}">1</td>
+														<td th:text="${product.name}"></td>
+														<td th:text="${product.description}"></td>
+														<td th:text="${product.family.name}"></td>
+														<td th:text="${product.price}"></td>
+														<td><a
+															th:href="@{'/product.edit.htm/' + ${product.id}}">Edit</a>
+														</td>
+														<td><a
+															th:href="@{'/product.view.htm/' + ${product.id}}">Details</a>
+														</td>
+														<td>
+															<div>
+																<a th:attr="data-id=${product.id}" data-toggle="modal"
+																	class="open-DeleteItemDialog" th:href="@{#}">Delete</a>
+															</div>
+														</td>
+														
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<div th:replace="home :: footer" />
+			</div>
+		</div>
+	</div>
+	<div id="deleteItemDialog" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<form method="post" th:action="@{/product.remove}"
+				th:object="${forDeleteAction}">
+				<div class="modal-content">
+					<div class="modal-header alert-danger">
+						<h4 class="modal-title">Attention</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Do you really want to delete this product ?</p>
+						<input type="hidden" th:field="*{id}" name="elementId" id="elementId" value="" />
+					</div>
+					<div class="modal-footer">
+						<input type="submit" value="Ok" class="btn btn-primary" />
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
